@@ -33,6 +33,9 @@ Partial Class cmbFakultas
         Me.cmbJurusan = New System.Windows.Forms.ComboBox()
         Me.btnProcces = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,7 +60,7 @@ Partial Class cmbFakultas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(49, 143)
+        Me.Label3.Location = New System.Drawing.Point(51, 188)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 17)
         Me.Label3.TabIndex = 2
@@ -66,7 +69,7 @@ Partial Class cmbFakultas
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(51, 177)
+        Me.Label4.Location = New System.Drawing.Point(51, 226)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 17)
         Me.Label4.TabIndex = 3
@@ -90,7 +93,7 @@ Partial Class cmbFakultas
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"FMIPA", "FKIP", "FEB"})
-        Me.ComboBox1.Location = New System.Drawing.Point(210, 140)
+        Me.ComboBox1.Location = New System.Drawing.Point(210, 185)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(155, 24)
         Me.ComboBox1.TabIndex = 6
@@ -99,14 +102,14 @@ Partial Class cmbFakultas
         '
         Me.cmbJurusan.FormattingEnabled = True
         Me.cmbJurusan.Items.AddRange(New Object() {"Matematika", "Kimia", "Biologi", "Fisika", "Ilmu Komputer"})
-        Me.cmbJurusan.Location = New System.Drawing.Point(210, 170)
+        Me.cmbJurusan.Location = New System.Drawing.Point(210, 219)
         Me.cmbJurusan.Name = "cmbJurusan"
         Me.cmbJurusan.Size = New System.Drawing.Size(155, 24)
         Me.cmbJurusan.TabIndex = 7
         '
         'btnProcces
         '
-        Me.btnProcces.Location = New System.Drawing.Point(52, 236)
+        Me.btnProcces.Location = New System.Drawing.Point(52, 256)
         Me.btnProcces.Name = "btnProcces"
         Me.btnProcces.Size = New System.Drawing.Size(75, 23)
         Me.btnProcces.TabIndex = 8
@@ -117,11 +120,45 @@ Partial Class cmbFakultas
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(49, 148)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(95, 17)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Jenis Kelamin"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(210, 146)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(81, 21)
+        Me.RadioButton1.TabIndex = 10
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Laki-laki"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(342, 148)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(102, 21)
+        Me.RadioButton2.TabIndex = 11
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Perempuan"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
         'cmbFakultas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(567, 344)
+        Me.Controls.Add(Me.RadioButton2)
+        Me.Controls.Add(Me.RadioButton1)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnProcces)
         Me.Controls.Add(Me.cmbJurusan)
         Me.Controls.Add(Me.ComboBox1)
@@ -153,6 +190,7 @@ Partial Class cmbFakultas
 
         Dim nip As String = txtNIP.Text
         Dim nama As String = txtNama.Text
+        Dim jenisKelamin As String = If(RadioButton1.Checked, "Laki - Laki", "Perempuan")
         Dim fakultas As String = ComboBox1.SelectedItem.ToString()
         Dim jurusan As String = cmbJurusan.SelectedItem.ToString()
 
@@ -160,10 +198,14 @@ Partial Class cmbFakultas
         MessageBox.Show("Hai : " & nip & vbCrLf &
                         "Nip : " & nama & vbCrLf &
                         "Fakultas : " & fakultas & vbCrLf &
-                        "Jurusan : " & jurusan, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        "Jurusan : " & jurusan & vbCrLf &
+                        "Jenis Kelamin : " & jenisKelamin, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
 
     End Sub
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class
